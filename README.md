@@ -13,7 +13,10 @@ We have 3 ranking function:
 
 ### Part2: Learning to Rank
 Use part1 results to train a ML model, then test on new 10 queries.  
-Example: please refer to sparse_retrieval/codes/random_forest.py
+We have tried 3 models:  
+1. logistic_regression
+2. random_forest
+3. xgbranker
 
 ### Usage
 After download WT2G corpus  
