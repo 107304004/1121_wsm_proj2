@@ -44,6 +44,10 @@ echo "Direchlet Smoothing result on 10 queries"
 perl trec_eval.pl ../data/qrels.441-450.txt runs/dir_10.run
 echo "Jelinek-Merver Smoothing result on 10 quries"
 perl trec_eval.pl ../data/qrels.441-450.txt runs/jm_10.run
+
+echo "Learning to Rank result (logistic_regression)"
+python codes/logistic_regression.py
+perl trec_eval.pl ../data/qrels.441-450.txt runs/logistic_regression_10.run
 echo "Learning to Rank result (random_forest)"
 python codes/random_forest.py
 perl trec_eval.pl ../data/qrels.441-450.txt runs/random_forest_10.run

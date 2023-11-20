@@ -8,7 +8,7 @@ if __name__ == '__main__':
     parser.add_argument("--index", default="indexes/collection", type=str)
     parser.add_argument("--query", default="../data/topics.401-450.txt", type=str)
     parser.add_argument("--method", default="bm25", type=str)
-    parser.add_argument("--k", default=1000, type=int)
+    parser.add_argument("--k", default=2000, type=int)
     parser.add_argument("--output", default='runs/bm25.run', type=str)
     
     args = parser.parse_args()

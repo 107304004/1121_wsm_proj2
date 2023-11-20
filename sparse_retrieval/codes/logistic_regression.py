@@ -1,5 +1,5 @@
 from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 from util import read_run, read_qrels
 
@@ -43,10 +43,7 @@ X_test = scaler.transform(X_test)
 
 
 # create and train the classifier
-classifier = RandomForestClassifier(random_state=0, 
-                                    criterion='entropy', 
-                                    min_samples_split=4096,
-                                    n_estimators=120)
+classifier = LogisticRegression(random_state=0)
 classifier.fit(X_train, y_train)
 
 
@@ -66,7 +63,7 @@ print(df_result.head(10))
 
 
 # save result
-output = open('runs/random_forest_10.run', 'w')
+output = open('runs/logistic_regression_10.run', 'w')
 i = 0
 qid_now = '441'
 for qid, docid, score in zip(df_result['qid'], df_result['docid'], df_result['score']):    
@@ -76,6 +73,6 @@ for qid, docid, score in zip(df_result['qid'], df_result['docid'], df_result['sc
     qid_now = qid
     if i > 1000:
         continue
-    output.write(f'{qid} Q0 {docid} {i} {score:.5f} random_forest\n')
+    output.write(f'{qid} Q0 {docid} {i} {score:.5f} logistic_regression\n')
 
 print('\nFinish\n')

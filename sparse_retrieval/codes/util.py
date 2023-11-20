@@ -20,8 +20,6 @@ class JMSearcher(LuceneSearcher):
         LMJMSimilarity = autoclass('org.apache.lucene.search.similarities.LMJelinekMercerSimilarity')(float(jm_lambda))
         self.object.searcher = autoclass('org.apache.lucene.search.IndexSearcher')(self.object.reader)
         self.object.searcher.setSimilarity(LMJMSimilarity)
-        
-
 
 
 def read_title(query_path):
@@ -55,10 +53,11 @@ def read_run(run_path):
     df = pd.read_csv(run_path, sep=" ", header=None, names=colnames)
 
     method = df['method'][0]
-    df.rename(columns={'score': method}, inplace=True)
+    df.rename(columns={'score': method+'_score'}, inplace=True)
 
     df['ids'] = df['qid'].apply(lambda x: str(x)) + "_" + df['docid']
-    df = df[['ids', method]]
+    df = df[['ids', 'rank', method+'_score']]
+    df.rename(columns={'rank': method+'_rank'}, inplace=True)
 
     return df
 
