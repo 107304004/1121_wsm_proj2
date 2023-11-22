@@ -1,16 +1,17 @@
-./clean.sh
+# ./clean.sh
 
 
 ###########################################################################
 # We first convert WT2G files into the jsonl format required by pyserini. #
 ###########################################################################
-python codes/convert_wt2g_to_jsonl.py
+# python codes/convert_wt2g_to_jsonl.py
 
 
 ##################################################################
 # Secondly, we can build index for our WT2G corpus(247491 docs). #
 ##################################################################
-./codes/build_index.sh
+# ./codes/build_index.sh
+./codes/build_trecweb_index.sh
 
 
 ##########################################################
